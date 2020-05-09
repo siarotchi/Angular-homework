@@ -1,48 +1,44 @@
-<table class="table">
+<table class="table table-bordered text-white">
   <thead>
-    <tr>
+    <tr class="text-dark font-weight-bold">
       <th scope="col">#</th>
-      <th scope="col">Lesson name</th>
+      <th scope="col">Lesson</th>
       <th scope="col">Hours</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Teacher</th>
+      <th class="d-flex justify-content-center" scope="col">Description</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let lesson of lessons; let i = index">
+    <tr *ngFor="let lesson of lessons; let i = index" class="pointer" (click)="onClickLesson(i)">
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ lesson.name }}</td>
-      <td>{{ lesson.hour }}</td>
-      <td>
-        <button class="btn btn-danger" (click)="onDeleteLesson(i)">
-          Delete
-        </button>
-      </td>
+      <td class="lesson">{{ lesson.name }}</td>
+      <td class="hour">{{ lesson.hour }}</td>
+      <td class="teacher">{{ lesson.teacher }}</td>
+      <td>{{ lesson.description }}</td>
     </tr>
   </tbody>
 </table>
 <hr />
-<form #lessonForm="ngForm" (ngSubmit)="onSubmit(lessonForm)" class="row">
-  <div class="form-group col-md-5">
+<form #lessonForm="ngForm" (ngSubmit)="onSubmit(lessonForm)" class="row text-dark font-weight-bold">
+  <div class="form-group col-md-4">
     <label for="name">Enter Lesson</label>
-    <input
-      type="text"
-      id="name"
-      class="form-control"
-      ngModel
-      name="name"
-      required
-    />
+    <input type="text" id="name" class="form-control" ngModel name="name" required />
   </div>
-  <div class="form-group col-md-3">
+  <div class="form-group col-md-4">
     <label for="hour">Enter Hours</label>
-    <input
-      type="number"
-      id="hour"
-      class="form-control"
-      ngModel
-      name="hour"
-      required
-    />
+    <input type="number" id="hour" class="form-control" ngModel name="hour" required />
   </div>
-  <button class="btn btn-primary col-md-3">Add</button>
+  <div class="form-group col-md-4">
+    <label for="teacher">Enter Teacher</label>
+    <input type="text" id="teacher" class="form-control" ngModel name="teacher" required />
+  </div>
+  <div class="form-group col-md-12">
+    <label for="description">Enter Description</label>
+    <input type="text" id="description" class="form-control" ngModel name="description" required />
+  </div>
+  <div class="form-group col-md-12">
+    <label for="info">Enter Info</label>
+    <input type="text" id="info" class="form-control" ngModel name="info" required />
+  </div>
+  <button class="btn btn-primary col-md-12">Add</button>
 </form>

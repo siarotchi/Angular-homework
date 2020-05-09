@@ -9,15 +9,15 @@ import { Lesson } from '../../../models/lesson.model';
 })
 export class LessonsDetailsComponent {
   @Input() lessons: Lesson[];
-  @Output() delete = new EventEmitter();
   @Output() add = new EventEmitter();
-
-  onDeleteLesson(index: number) {
-    this.delete.emit(index);
-  }
+  @Output() lessonClick = new EventEmitter();
 
   onSubmit(lessonForm: NgForm) {
     const formValue = lessonForm.value;
     this.add.emit(formValue);
+    lessonForm.resetForm({});
+  }
+  onClickLesson(index: number) {
+    this.lessonClick.emit(index);
   }
 }

@@ -1,0 +1,7 @@
+.lessonName {
+  text-decoration: underline;
+  margin-bottom: 30px;
+  &:hover {
+    transform: scale(1.2);
+  }
+}

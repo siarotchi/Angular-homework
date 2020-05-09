@@ -1,22 +1,35 @@
-<div class="card">
-  <div class="card-header">
-    <h4 class="my-card-header">DEMO</h4>
+<div class="card text-white border border-dark">
+  <div class="card-header bg-primary border border-dark">
+    <img
+      class="rounded float-left"
+      src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/180px-Harvard_shield_wreath.svg.png"
+      alt="logo"
+    />
+    <div class="card-body">
+      <h1 class="card-title d-flex justify-content-center align-items-center">
+        Homework Table
+      </h1>
+    </div>
   </div>
-  <div class="card-body">
+  <div class="card-body bg-info">
     <div class="row">
       <div class="col-md-6">
         <app-lessons-details
           [lessons]="lessons"
-          (delete)="onDelete($event)"
           (add)="onAdd($event)"
+          (lessonClick)="handleLessonClicked($event)"
         >
         </app-lessons-details>
       </div>
-      <div class="col-md-6">
-        <h3 [ngStyle]="{ color: lessons.length > 5 ? 'red' : 'blue' }">
-          You have in total {{ lessons.length }} lessons
-        </h3>
-        <h3>You have in total {{ totalHours }} Hours</h3>
+
+      <div class="col-md-1 verticalLine"></div>
+
+      <div class="col-md-4">
+        <lessons-description
+          (delete)="onDelete($event)"
+          [oneLesson]="oneLesson"
+          [lessonIndex]="lessonIndex"
+        ></lessons-description>
       </div>
     </div>
   </div>
